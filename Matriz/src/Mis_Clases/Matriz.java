@@ -12,7 +12,7 @@ import java.util.Random;
  * @author Mario Salazar
  */
 public class Matriz {
-    
+
     private int rows;
     private int columns;
     private int[][] matriz;
@@ -110,7 +110,45 @@ public class Matriz {
         }
     }
 
-    public boolean NumberPrimo(int number) {
+    public void LlenarMatrizCaracol() {
+        int number = 1;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = i; j < rows; j++) {
+                matriz[i][j] = number++;
+            }
+            for (int j = i + 1; j < rows; j++) {
+                matriz[j][rows - 1] = number++;
+            }
+            for (int j = rows-2; j >=i; j--) {
+                matriz[rows-1][j] = number++;
+            }
+            for (int j = rows-2; j >i; j--) {
+                matriz[j][i] = number++;
+            }
+            rows--;
+        }
+    }
+
+    public void LlenarMatrizCaracolPrimos() {
+        int number = 1;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = i; j < rows; j++) {
+                matriz[i][j] = NumberPrimo(number++);
+            }
+            for (int j = i + 1; j < rows; j++) {
+                matriz[j][rows - 1] = NumberPrimo(number++);
+            }
+            for (int j = rows-2; j >=i; j--) {
+                matriz[rows-1][j] = NumberPrimo(number++);
+            }
+            for (int j = rows-2; j >i; j--) {
+                matriz[j][i] = NumberPrimo(number++);
+            }
+            rows--;
+        }
+    }
+
+    public boolean isNumberPrimo(int number) {
         boolean resp = true;
         if (number < 2) {
             resp = false;
@@ -120,6 +158,23 @@ public class Matriz {
                     resp = false;
                 }
             }
+        }
+        return resp;
+    }
+    
+    public int NumberPrimo(int number) {
+        int primo = 0;
+        int resp=0;
+        int cont=1;
+        while (cont<=number) {            
+            if(isNumberPrimo(primo)){
+                cont++;
+            }
+            if(isNumberPrimo(primo)&&cont-1==number){
+                resp=primo;
+                break;
+            }
+            primo++;
         }
         return resp;
     }
@@ -158,6 +213,5 @@ public class Matriz {
     public void setMatriz(int[][] matriz) {
         this.matriz = matriz;
     }
-    
-    
+
 }
