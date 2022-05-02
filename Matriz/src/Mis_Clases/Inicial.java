@@ -12,7 +12,7 @@ package Mis_Clases;
 public class Inicial {
     public static void main(String[] args) {
          System.out.println("Hello World!");
-        Matriz matriz=new Matriz(5, 4);
+        Matriz matriz=new Matriz(7, 7);
         matriz.LlenarMatrizAleatorio();
         System.out.println(""+matriz.ShowMatriz());
         matriz.LlenarMatrizAsc();
@@ -25,6 +25,10 @@ public class Inicial {
         System.out.println(""+matriz.ShowMatriz());
         matriz.LlenarMatrizZicZacNew();
         System.out.println(""+matriz.ShowMatriz());
-        System.out.println(""+matriz.NumberPrimo(8));
+        //matriz.LlenarMatrizCaracol();
+        System.out.println(""+matriz.ShowMatriz());
+        matriz.LlenarMatrizCaracolPrimos();
+        System.out.println(""+matriz.ShowMatriz());
+        //System.out.println(""+matriz.NumberPrimo(10));
     }
 }
